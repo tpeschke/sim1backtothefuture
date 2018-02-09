@@ -13,7 +13,11 @@ app.use(cors())
 app.use( express.static( __dirname + `/../build` ) ) 
 
 //Sim 1 76c
-app.get('/api/getList', ctrl.getList)
+app.get('/api/getList', function(req,res,next) {
+    // sim 2 75d
+    console.log('this is request level middle ware and I\'m working')
+    next()
+},ctrl.getList)
 
 //sim 1 74d-3
 app.post('/api/saveList', ctrl.postList)
